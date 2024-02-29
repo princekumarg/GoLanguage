@@ -11,36 +11,26 @@ import (
 func main() {
 	fmt.Println("Welcome to web verb video - LCO")
 	PerformGetRequest()
-	PerformPostJsonRequest()
-	PerformPostFormRequest()
 }
 
 func PerformGetRequest() {
-	const myurl = "http://localhost:3143/get"
+	const myurl = "http://localhost:4000/get"
+	resp, err := http.Get(myurl)
 
-	response, err := http.Get(myurl)
 	if err != nil {
 		panic(err)
 	}
+	defer resp.Body.Close()
 
-	defer response.Body.Close()
+	fmt.Println("Status code: ", resp.StatusCode)
+	fmt.Println("Content length is: ", resp.ContentLength)
 
-	fmt.Println("Status code: ", response.StatusCode)
-	fmt.Println("Content length is: ", response.ContentLength)
+	body, err := io.ReadAll(resp.Body)
+	fmt.Println("response body", string(body))
 
-	var responseString strings.Builder
-	content, _ := io.ReadAll(response.Body)
-	byteCount, _ := responseString.Write(content)
-
-	fmt.Println("ByteCount is: ", byteCount)
-	fmt.Println(responseString.String())
-
-	//fmt.Println(content)
-	//fmt.Println(string(content))
 }
-
 func PerformPostJsonRequest() {
-	const myurl = "http://localhost:3143/post"
+	const myurl = "http://localhost:8000/post"
 
 	//fake json payload
 
@@ -65,7 +55,7 @@ func PerformPostJsonRequest() {
 }
 
 func PerformPostFormRequest() {
-	const myurl = "http://localhost:3143/postform"
+	const myurl = "http://localhost:8000/postform"
 
 	//formdata
 
