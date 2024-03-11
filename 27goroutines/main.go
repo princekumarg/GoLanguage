@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"sync"
+	"time"
 )
 
 var signals = []string{"test"}
@@ -11,6 +12,8 @@ var wg sync.WaitGroup
 var mut sync.Mutex
 
 func main() {
+	go greeter("Hello")
+	go greeter("world")
 	websitelist := []string{
 		"https://google.com",
 		"https://yahoo.com",
@@ -25,6 +28,13 @@ func main() {
 	wg.Wait()
 	fmt.Println(signals)
 }
+func greeter(s string) {
+	for i := 0; i < 6; i++ {
+		time.Sleep(3 * time.Millisecond)
+		fmt.Println(s)
+	}
+}
+
 func getStatusCode(endpoint string) {
 	defer wg.Done()
 	res, err := http.Get(endpoint)
