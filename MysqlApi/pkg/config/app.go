@@ -13,7 +13,7 @@ var (
 
 func Connect() {
 	user := "root"
-	password := "Ecnirp@1Kumartea@"
+	password := "Your_password"
 	database := "movieapi"
 	mysqlURL := "%s:%s@/%s?charset=utf8mb4&parseTime=True&loc=Local"
 	d, err := gorm.Open("mysql", fmt.Sprintf(mysqlURL, user, password, database))
