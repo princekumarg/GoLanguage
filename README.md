@@ -4,6 +4,9 @@
 
 Golang, also known as Go, is a statically typed, compiled programming language designed for simplicity, efficiency, and concurrency. It was developed by Google and released in 2009, gaining popularity for its speed, scalability, and built-in support for concurrent programming.
 
+![image](https://github.com/princekumarg/GoLanguage/assets/86905668/b6aae7b8-31f4-41e8-b9a2-558511d53eef)
+
+
 ## Key Concepts:
 
 1. **Static Typing:** Go is statically typed, meaning variable types are determined at compile time, enhancing code reliability and performance.
